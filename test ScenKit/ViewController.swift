@@ -30,7 +30,7 @@ class ViewController: UIViewController {
     var selectedColor:UIColor = .yellow
     func loadScene(){
         
-        scene = SCNScene(named: "car.obj")!
+        scene = SCNScene(named: "sls.obj")!
         
          //scene.rootNode.childNode(withName: "Tee_S_tee", recursively: true)
      //   queenNode.scale = SCNVector3Make(100, 100, 100)
@@ -39,7 +39,7 @@ class ViewController: UIViewController {
        
         
         sceneView.scene = scene
-        
+        sceneView.antialiasingMode = .multisampling2X
         sceneView.autoenablesDefaultLighting = true
         sceneView.allowsCameraControl = true
     }
@@ -53,9 +53,8 @@ class ViewController: UIViewController {
         //node?.geometry?.firstMaterial?.diffuse.contents = selectedColor
         
         for mat in (node?.geometry?.materials)! {
-            if mat.name == "Body"{
+            if (mat.name?.contains("body"))!{
                 mat.diffuse.contents = selectedColor
-                
            }
             
         }
